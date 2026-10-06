@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Athènes en 3D — Voyage au cœur de l'Acropole</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">ΑΘ</span>
+    <span class="brand-name">Athènes <em>en 3D</em></span>
+  </div>
+  <nav class="nav">
+    <a href="#scene">La scène</a>
+    <a href="#monuments">Monuments</a>
+    <a href="#histoire">Histoire</a>
+  </nav>
+  <button id="btn-sunset" class="btn ghost" type="button">Coucher de soleil</button>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <p class="kicker">Voyage immersif · Grèce antique</p>
+    <h1>Marchez dans <span class="accent">Athènes</span>,<br>3 500 ans d'histoire sous vos yeux</h1>
+    <p class="lead">
+      Une reconstitution 3D de la ville sacrée : l'Acropole, le Parthénon,
+      la Plaka et la mer Égée. Faites tourner la scène, zoomez, explorez
+      chaque monument à la souris ou au doigt.
+    </p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#scene">Explorer la scène 3D</a>
+      <a class="btn ghost" href="#monuments">Voir les monuments</a>
+    </div>
+    <ul class="hero-tips">
+      <li>Glissez pour tourner la caméra</li>
+      <li>Molette ou pincement pour zoomer</li>
+      <li>Cliquez un repère lumineux pour en savoir plus</li>
+    </ul>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="sun"></div>
+    <div class="hill"></div>
+    <div class="columns">
+      <i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+  </div>
+</section>
+
+<section id="scene" class="scene-section">
+  <div class="scene-head">
+    <h2>L'Athènes antique, reconstituée</h2>
+    <p>La scène est générée procéduralement : aucun modèle externe, tout est dessiné en 3D dans votre navigateur.</p>
+  </div>
+  <div class="viewer">
+    <canvas id="canvas3d"></canvas>
+    <div id="poi-label" class="poi-label" hidden></div>
+    <div class="viewer-hud">
+      <button id="btn-autorotate" class="chip active" type="button">Rotation auto</button>
+      <button id="btn-reset" class="chip" type="button">Recentrer</button>
+      <span id="hint" class="hint">Glissez pour tourner · Molette pour zoomer</span>
+    </div>
+    <div id="loader" class="loader"><span></span>Construction de la cité…</div>
+  </div>
+</section>
+
+<section id="monuments" class="monuments">
+  <h2>Les monuments de la scène</h2>
+  <div class="cards">
+    <article class="card" data-poi="parthenon">
+      <div class="card-icon">🏛️</div>
+      <h3>Le Parthénon</h3>
+      <p>Temple dédié à Athéna Parthénos, chef-d'œuvre de l'architecture dorique (447–432 av. J.-C.).</p>
+    </article>
+    <article class="card" data-poi="erechtheion">
+      <div class="card-icon">🗿</div>
+      <h3>L'Érechthéion</h3>
+      <p>Célèbre pour son porche des Caryatides, ces statues de jeunes femmes portant le toit.</p>
+    </article>
+    <article class="card" data-poi="propylaea">
+      <div class="card-icon">🚪</div>
+      <h3>Les Propylées</h3>
+      <p>La porte monumentale de l'Acropole, entrée processionnelle de la colline sacrée.</p>
+    </article>
+    <article class="card" data-poi="theatre">
+      <div class="card-icon">🎭</div>
+      <h3>Le théâtre de Dionysos</h3>
+      <p>Berceau du théâtre grec, au flanc sud de l'Acropole, pouvant accueillir 17 000 spectateurs.</p>
+    </article>
+    <article class="card" data-poi="plaka">
+      <div class="card-icon">🏘️</div>
+      <h3>La Plaka</h3>
+      <p>Le vieux quartier aux maisons blanches en contrebas, au pied de la colline sacrée.</p>
+    </article>
+    <article class="card" data-poi="agora">
+      <div class="card-icon">🏺</div>
+      <h3>L'Agora</h3>
+      <p>Cœur civique de la ville : marché, débats politiques et philosophiques en plein air.</p>
+    </article>
+  </div>
+</section>
+
+<section id="histoire" class="history">
+  <div class="timeline">
+    <h2>Trois siècles qui ont façonné l'Occident</h2>
+    <ol>
+      <li><span class="year">447 av. J.-C.</span><p>Début de la construction du Parthénon sous Périclès, âge d'or d'Athènes.</p></li>
+      <li><span class="year">438 av. J.-C.</span><p>Inauguration de la statue chryséléphantine d'Athéna Parthénos de Phidias.</p></li>
+      <li><span class="year">27 av. J.-C. — 117 ap. J.-C.</span><p>L'Agora devient le centre de la vie publique de la cité-État.</p></li>
+      <li><span class="year">1687</span><p>Le Parthénon, alors poudrière vénitienne, explose sous les coups ottomans.</p></li>
+      <li><span class="year">Aujourd'hui</span><p>L'Acropole, classée au patrimoine mondial de l'UNESCO, domine toujours la ville.</p></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>Athènes en 3D — une démonstration WebGL générée procéduralement avec Three.js. Aucune image externe : toute la cité est dessinée en temps réel.</p>
+  <p class="small">Ouvrez simplement <code>index.html</code> dans votre navigateur, même hors connexion.</p>
+</footer>
+
+<script type="module" src="js/scene.js"></script>
+</body>
+</html>
